@@ -1,0 +1,233 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Device API"
+  description: "API for managing devices"
+
+paths:
+  /devices:
+    get:
+      summary: "Get all devices"
+      description: "Get a list of all devices"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Device"
+        404:
+          description: "Devices not found"
+        500:
+          description: "Internal server error"
+
+    post:
+      summary: "Create a new device"
+      description: "Create a new device with the provided information"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Device object"
+          required: true
+          schema:
+            $ref: "#/definitions/Device"
+      responses:
+        201:
+          description: "Device created successfully"
+          schema:
+            $ref: "#/definitions/Device"
+        400:
+          description: "Name and addr are required"
+        500:
+          description: "Internal server error"
+  /devices/{addr}:
+    put:
+      summary: "Update a device by Address"
+      description: "Update an existing device by providing the device address and the updated information"
+      produces:
+        - "application/json"
+      parameters:
+        - addr: "addr"
+          in: "path"
+          description: "Address of the device to be updated"
+          required: true
+          type: "string"
+        - name: "body"
+          in: "body"
+          description: "Updated device information"
+          required: true
+          schema:
+            type: "object"
+              
+              
+      responses:
+        200:
+          description: "Device updated successfully"
+          schema:
+            # $ref: "#/definitions/Device"
+        400:
+          description: "Name and addr are required, or device name is missing"
+        404:
+          description: "Device not found"
+        500:
+          description: "Internal server error"
+  /localizations:
+    get:
+      summary: "Get all localizations"
+      description: "Get a list of all localizations"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Localization"
+        500:
+          description: "Internal server error"
+
+    post:
+      summary: "Create a new localization"
+      description: "Create a new localization with the provided information"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Localization object"
+          required: true
+          schema:
+            $ref: "#/definitions/Localization"
+      responses:
+        201:
+          description: "Localization created successfully"
+          schema:
+            $ref: "#/definitions/Localization"
+        400:
+          description: "Status is required"
+        500:
+          description: "Internal server error"
+
+  /localizations/{id}:
+    put:
+      summary: "Update a localization by ID"
+      description: "Update an existing localization by providing the localization ID and the updated information"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the localization to be updated"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Updated localization information"
+          required: true
+          schema:
+            $ref: "#/definitions/Localization"
+      responses:
+        200:
+          description: "Localization updated successfully"
+          schema:
+            $ref: "#/definitions/Localization"
+        400:
+          description: "Status is required"
+        404:
+          description: "Localization not found"
+        500:
+          description: "Internal server error"
+  /operation:
+    get:
+      summary: "Get all operations"
+      description: "Get a list of all operations"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Operation"
+        500:
+          description: "Internal server error"
+    put:
+      summary: "Update an operation by address"
+      description: "Update an existing operation by providing the operation address and the updated information"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Updated operation information"
+          required: true
+          schema:
+            $ref: "#/definitions/Operation"
+      responses:
+        200:
+          description: "Operation updated successfully"
+          schema:
+            $ref: "#/definitions/Operation"
+        400:
+          description: "Address (addr) is required"
+        404:
+          description: "Operation not found"
+        500:
+          description: "Internal server error"
+definitions:
+  Device:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      addr:
+        type: "string"
+      type:
+        type: "string"
+      location:
+        type: "string"
+      operation:
+        type: "string"
+      status: 
+        type: "string"
+    required:
+      - name
+      - addr
+  Localization:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      # Add other fields as needed
+    required:
+      - status
+      # Add other required fields as needed
+  Operation:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      addr:
+        type: "string"
+      type:
+        type: "string"
+      operation:
+        type: "string"
+      # Add other fields as needed
+    required:
+      - addr
+      # Add other required fields as needed

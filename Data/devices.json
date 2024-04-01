@@ -1,0 +1,18 @@
+{
+  "devices": [
+    {
+      "id": "81b678a6-9416-404c-b30a-692ecc5675ce",
+      "name": "Smart Plug 1",
+      "relay_status": "off",
+      "value_limit": "1000",
+      "state_limit": false
+    },
+    {
+      "id": "172d1f3f-5e3d-485b-9399-1280714217c3",
+      "name": "Smart Plug 4",
+      "relay_status": "on",
+      "value_limit": "1",
+      "state_limit": true
+    }
+  ]
+}

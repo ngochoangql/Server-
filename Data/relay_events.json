@@ -1,0 +1,34 @@
+{
+  "relay_events": [
+    {
+      "id": "81b678a6-9416-404c-b30a-692ecc5675ce",
+      "device_id": "ca8401a8-9f2c-4338-b292-806a04b351c8",
+      "user_id": "user_id",
+      "event_type": 1,
+      "time_selection": "13:28",
+      "repeat_type": "daily",
+      "description": "\u0110i ch\u01a1i",
+      "status": false
+    },
+    {
+      "id": "172d1f3f-5e3d-485b-9399-1280714217c3",
+      "device_id": "84824564-6186-4f74-bbee-01dea4f3873a",
+      "user_id": "user_id",
+      "event_type": 1,
+      "time_selection": "13:35",
+      "repeat_type": "daily",
+      "description": "\u0110i ch\u01a1i",
+      "status": false
+    },
+    {
+      "id": "172d1f3f-5e3d-485b-9399-1280714217c3",
+      "device_id": "f02bf411-1018-4f02-8191-763e5c62cba1",
+      "user_id": "user_id",
+      "event_type": 1,
+      "time_selection": "13:38",
+      "repeat_type": "daily",
+      "description": "\u0110i ch\u01a1i",
+      "status": false
+    }
+  ]
+}
